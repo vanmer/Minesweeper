@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let width = 10
   let bombAmount = 20
   let squares = []
+  let isGameOver = false
 
   // create Board
   function createBoard() {
@@ -53,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // click on square actions
   function click(square) {
-    // if (isGameOver) return
+    let current = square.id
+    if (isGameOver) return
     if (square.classList.contains('checked') || square.classList.contains('flag')) return
     if (square.classList.contains('bomb')) {
       console.log('Game Over!')
@@ -64,13 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
         square.innerHTML = total
         return
       }
-      square.classList.add('checked')
+      checkSquare(square, currentId)
     }
+    square.classList.add('checked')
   }
 
-
-
-
+  // check neighbouring squares once square is clicked
 
 
 
