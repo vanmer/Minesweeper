@@ -44,10 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[i].setAttribute('data', total)
         // console.log(squares[i])
       }
-
-
     }
-
   }
 
   createBoard()
@@ -58,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isGameOver) return
     if (square.classList.contains('checked') || square.classList.contains('flag')) return
     if (square.classList.contains('bomb')) {
-      console.log('Game Over!')
+      // console.log('Game Over!')
+      gameOver(square)
     } else {
       let total = square.getAttribute('data')
       if (total != 0) {
@@ -119,6 +117,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 10)
   }
+
+  // game over
+  function gameOver(square) {
+    console.log('BOOM! Game Over!')
+    isGameOver = true
+
+    // show all the bombs
+    squares.forEach(square => {
+      if (square.classList.contains('bomb')) {
+        // square.innerHTML = '💣'
+        square.innerHTML = '🌼'
+        // square.innerHTML = '🌸'
+        // square.innerHTML = '🌹'
+      }
+
+    })
+
+
+
+
+  }
+
+
+
+
 
 
 
